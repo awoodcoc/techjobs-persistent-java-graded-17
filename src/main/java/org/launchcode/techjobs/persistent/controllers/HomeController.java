@@ -70,15 +70,8 @@ public class HomeController {
         List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
         newJob.setSkills(skillObjs);
 
-//        Optional< List<Skill>> opt = Optional.of((List<Skill>) skillRepository.findAllById(skills));
-//        if (opt.isEmpty()) {
-//            model.addAttribute("title", "Invalid ID: " + skills);
-//        } else {
-//            List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
-//            newJob.setSkills(skillObjs);
-//        }
-
         jobRepository.save(newJob);
+
         return "redirect:";
     }
 
@@ -90,10 +83,7 @@ public class HomeController {
         if (result.isPresent()) {
             Job job = (Job) result.get();
             model.addAttribute("job", job);
-            return "view";
         }
-        // model.addAttribute("jobs", jobRepository.findById(jobId));
-            // return "view";
         return "view";
     }
 

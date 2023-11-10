@@ -1,6 +1,7 @@
 package org.launchcode.techjobs.persistent.models;
 
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
@@ -42,7 +43,7 @@ public class Job extends AbstractEntity {
     }
 
     public void setSkills(List<Skill> skills) {
-        this.skills.addAll(skills);
+        this.skills = skills;
     }
 
 }

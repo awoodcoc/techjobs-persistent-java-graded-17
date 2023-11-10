@@ -19,8 +19,6 @@ public class EmployerController {
     private EmployerRepository employerRepository;
 
     // previously called displayAllEmployers
-    // may need to revert and create new index controller
-    // depending on editing views
     @GetMapping("/")
     public String index (Model model) {
         model.addAttribute("title", "Employers");
@@ -44,16 +42,17 @@ public class EmployerController {
             return "employers/add";
         }
         employerRepository.save(newEmployer);
-        return "redirect:/employers";
+        return "redirect:/employers/";
     }
 
     @GetMapping("view/{employerId}")
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
+        model.addAttribute("employers", employerRepository.findAll());
 
         Optional<Employer> optEmployer = employerRepository.findById(employerId);
         if (optEmployer.isPresent()) {
             Employer employer = (Employer) optEmployer.get();
-            model.addAttribute("employers", employer);
+            model.addAttribute("employer", employer);
             return "employers/view";
         } else {
             return "redirect:../";
