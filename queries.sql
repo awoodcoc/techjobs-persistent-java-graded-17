@@ -9,9 +9,11 @@ CREATE TABLE job (
 
 --Part 2
 
-SELECT * FROM job
-WHERE job.employer = "St. Louis";
+SELECT name FROM employer
+WHERE location = "St. Louis City";
 
 --Part 3
+
+DROP TABLE job;
 
 --Part 4

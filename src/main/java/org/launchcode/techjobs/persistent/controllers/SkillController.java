@@ -19,8 +19,12 @@ public class SkillController {
     @Autowired
     private SkillRepository skillRepository;
 
-    @GetMapping
-    public String displayAllSkills(Model model) {
+    // previously called displayAllSkills
+    // may need to revert and create new index controller
+    // depending on editing views
+    @GetMapping("/")
+    public String index(Model model) {
+        model.addAttribute("title", "Skills");
         model.addAttribute("skills", skillRepository.findAll());
         return "skills/index";
     }

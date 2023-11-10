@@ -18,8 +18,12 @@ public class EmployerController {
     @Autowired
     private EmployerRepository employerRepository;
 
-    @GetMapping
-    public String displayAllEmployers(Model model) {
+    // previously called displayAllEmployers
+    // may need to revert and create new index controller
+    // depending on editing views
+    @GetMapping("/")
+    public String index (Model model) {
+        model.addAttribute("title", "Employers");
         model.addAttribute("employers", employerRepository.findAll());
         return "employers/index";
     }
